@@ -1,0 +1,21 @@
+<!--//this is written in the partials file which will help to reduce redundancy we can use this in other ejs files by syntax like include('partials/nav') 
+//include ('partials/nav') will include this code there and partials/nav in the brackets is the path of this file from the ejs file where we are including it
+-->
+
+<header class="bg-red-500 text-white p-4 shadow-md">
+  <nav class="container mx-auto flex justify-between items-center">
+    <ul class="flex space-x-4">
+      <li>
+        <a
+          href="/"
+          class="hover:bg-red-400 py-2 px-4 rounded transition duration-300"
+          >Go to Home</a
+        >
+      </li>
+      <li>
+        <a href="/host/add-home"
+          class="hover:bg-red-400 py-2 px-4 rounded transition duration-300">Add Home</a>
+      </li>
+    </ul>
+  </nav>
+</header>
