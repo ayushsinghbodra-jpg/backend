@@ -18,6 +18,7 @@ exports.getEditHome = (req, res, next) => {
   console.log("Editing mode:", req.query.editing);
   console.log("Req", req);
   //req.params is used to get the dynamic parameters from the url
+  //in this dynamic parameter homeId is defined in the route /host/edit-home/:homeId
   const homeId = req.params.homeId;
   //req.query is used to get the query parameters from the url
   const editing = req.query.editing === 'true';
