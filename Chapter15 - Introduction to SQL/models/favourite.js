@@ -12,6 +12,7 @@ module.exports = class Favourite {
       if (favourites.includes(homeId)) {
         callback("Home is already marked favourite");
       } else {
+        //we are passing the homeId to the favourites array because we are storing only the homeIds in the favourite.json file
         favourites.push(homeId);
         fs.writeFile(favouriteDataPath, JSON.stringify(favourites), callback);
       }
