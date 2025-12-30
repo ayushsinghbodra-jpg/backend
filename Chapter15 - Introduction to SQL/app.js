@@ -9,8 +9,17 @@ const storeRouter = require("./routes/storeRouter")
 const hostRouter = require("./routes/hostRouter")
 const rootDir = require("./utils/pathUtil");
 const errorsController = require("./controllers/errors");
+//const db = require("./utils/databaseUtil");
 
 const app = express();
+// this is just to check the database connection and fetching the data from the database
+//it should return the data present in the homes table
+// db.execute('SELECT * FROM homes').then(result=>{
+//   console.log("Getting the data from the database", result);
+// })
+// .catch(err=>{
+//   console.log("Error while fetching data from database", err);  
+// });
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');

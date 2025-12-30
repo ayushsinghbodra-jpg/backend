@@ -1,5 +1,9 @@
 const Home = require("../models/home");
 
+
+//getAddHome will render the edit-home ejs template with editing set to false
+//editing is used to determine whether we are adding a new home or editing an existing home if editing is false we are adding a new home and if it is true we are editing an existing home
+//
 exports.getAddHome = (req, res, next) => {
   res.render("host/edit-home", {
     pageTitle: "Add Home to airbnb",
@@ -9,9 +13,21 @@ exports.getAddHome = (req, res, next) => {
 };
 
 exports.getEditHome = (req, res, next) => {
+  console.log("Came to edit home",req.params);
+  console.log("Query query", req.query);
+  console.log("Editing mode:", req.query.editing);
+  console.log("Req", req);
+  //req.params is used to get the dynamic parameters from the url
   const homeId = req.params.homeId;
+  //req.query is used to get the query parameters from the url
   const editing = req.query.editing === 'true';
 
+  //difference between dynaminc parameters and query parameters
+  //dynamic parameters are part of the url and are defined in the route like /host/edit-home/:homeId
+  //query parameters are added to the url after the ? symbol and are not defined in the route like /host/edit-home/1?editing=true
+
+
+  //findById is prsently being called from the Home model it will return a promise
   Home.findById(homeId).then(([homes]) => {
     const home = homes[0];
     if (!home) {
