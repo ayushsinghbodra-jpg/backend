@@ -4,7 +4,7 @@ const storeRouter = express.Router();
 
 // Local Module
 const storeController = require("../controllers/storeController");
-
+//all routes related to store operations
 storeRouter.get("/", storeController.getIndex);
 storeRouter.get("/homes", storeController.getHomes);
 storeRouter.get("/bookings", storeController.getBookings);
