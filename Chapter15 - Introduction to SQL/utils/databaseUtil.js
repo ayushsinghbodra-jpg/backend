@@ -12,4 +12,5 @@ const pool = mysql.createPool({
   database: 'airbnb'
 });
 
+//we are exporting the pool object with promise support this allows us to use async/await syntax when interacting with the database making our code cleaner and easier to read
 module.exports = pool.promise();
