@@ -6,6 +6,7 @@ const MONGO_URL = "mongodb+srv://root:root@projects.gcju5uc.mongodb.net/?appName
 
 let _db;
 
+
 const mongoConnect = (callback) => {
   MongoClient.connect(MONGO_URL)
   .then(client => {

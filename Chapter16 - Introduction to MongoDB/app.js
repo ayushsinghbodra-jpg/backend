@@ -9,6 +9,7 @@ const storeRouter = require("./routes/storeRouter")
 const hostRouter = require("./routes/hostRouter")
 const rootDir = require("./utils/pathUtil");
 const errorsController = require("./controllers/errors");
+//connecting through mongodb
 const {mongoConnect} = require('./utils/databaseUtil');
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(express.urlencoded());
 app.use(storeRouter);
 app.use("/host", hostRouter);
 
+//this will make the files in public folder accessible statically
 app.use(express.static(path.join(rootDir, 'public')))
 
 app.use(errorsController.pageNotFound);
