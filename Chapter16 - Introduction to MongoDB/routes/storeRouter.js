@@ -1,5 +1,7 @@
 // External Module
 const express = require("express");
+
+//storeRouter instance will have all the routes related to store   since express.Router() is usedwhich is used to create modular mountable route handlers
 const storeRouter = express.Router();
 
 // Local Module
