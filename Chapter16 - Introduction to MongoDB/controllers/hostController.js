@@ -8,8 +8,10 @@ exports.getAddHome = (req, res, next) => {
   });
 };
 
+
 exports.getEditHome = (req, res, next) => {
   const homeId = req.params.homeId;
+  //this will check the query parameter in the URL and check if the editing part of the part is true or not . It is strictly checking.
   const editing = req.query.editing === 'true';
 
   Home.findById(homeId).then(home => {
@@ -49,11 +51,14 @@ exports.postAddHome = (req, res, next) => {
 };
 
 exports.postEditHome = (req, res, next) => {
+  //htis wil destructure the entire thing that was coming fromm the req.body.
   const { id, houseName, price, location, rating, photoUrl, description } = req.body;
+  //this will create an new object containg the data that would be passed to the constructor in the other file.
   const home = new Home(houseName, price, location, rating, photoUrl, description, id);
   home.save().then(result => {
     console.log('Home updated ', result);
   });
+  //to redirect the page after updating.
   res.redirect("/host/host-home-list");
 };
 
