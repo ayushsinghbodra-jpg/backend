@@ -1,6 +1,8 @@
 const Favourite = require("../models/favourite");
 const Home = require("../models/home");
 
+
+//we need this to 
 exports.getIndex = (req, res, next) => {
   Home.fetchAll().then((registeredHomes) => {
     res.render("store/index", {
@@ -10,6 +12,7 @@ exports.getIndex = (req, res, next) => {
     });
   });
 };
+
 
 exports.getHomes = (req, res, next) => {
   Home.fetchAll().then((registeredHomes) => {
