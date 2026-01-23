@@ -29,8 +29,11 @@ exports.getBookings = (req, res, next) => {
 };
 
 exports.getFavouriteList = (req, res, next) => {
+  //.find will fetch all favourite documents from the Favourite collection.
   Favourite.find()
+  //.populate('houseId') will replace the houseId field in each favourite document with the actual Home document it references.
   .populate('houseId')
+  //.then processes the array of favourite documents retrieved from the database.
   .then((favourites) => {
     const favouriteHomes = favourites.map((fav) => fav.houseId);
     res.render("store/favourite-list", {
@@ -43,8 +46,9 @@ exports.getFavouriteList = (req, res, next) => {
 
 exports.postAddToFavourite = (req, res, next) => {
   const homeId = req.body.id;
+  //.findOne is used to check if a favourite document with the specified houseId already exists in the Favourite collection.
   Favourite.findOne({houseId: homeId}).then((fav) => {
-    if (fav) {
+    if (fav) { 
       console.log("Already marked as favourite");
     } else {
       fav = new Favourite({houseId: homeId});

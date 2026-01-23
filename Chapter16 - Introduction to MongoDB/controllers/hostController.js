@@ -1,5 +1,6 @@
 const Home = require("../models/home");
 
+//this will render the add home page when the user clicks on the add home button.
 exports.getAddHome = (req, res, next) => {
   res.render("host/edit-home", {
     pageTitle: "Add Home to airbnb",
@@ -17,6 +18,7 @@ exports.getEditHome = (req, res, next) => {
   Home.findById(homeId).then(home => {
     if (!home) {
       console.log("Home not found for editing.");
+      //if we willnot put redirect in this block then the code below will give error as home will be undefined.
       return res.redirect("/host/host-home-list");
     }
 

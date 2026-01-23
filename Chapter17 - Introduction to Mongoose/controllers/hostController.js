@@ -10,6 +10,7 @@ exports.getAddHome = (req, res, next) => {
 
 exports.getEditHome = (req, res, next) => {
   const homeId = req.params.homeId;
+  //we need to check if the editing mode is enabled by looking for the editing query parameter in the request URL.
   const editing = req.query.editing === "true";
 
   Home.findById(homeId).then((home) => {
@@ -80,6 +81,7 @@ exports.postEditHome = (req, res, next) => {
 exports.postDeleteHome = (req, res, next) => {
   const homeId = req.params.homeId;
   console.log("Came to delete ", homeId);
+  //findByIdAndDelete is a Mongoose method that finds a document by its unique identifier (ID) and deletes it from the database.
   Home.findByIdAndDelete(homeId)
     .then(() => {
       res.redirect("/host/host-home-list");

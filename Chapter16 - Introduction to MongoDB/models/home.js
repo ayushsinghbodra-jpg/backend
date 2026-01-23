@@ -57,3 +57,4 @@ module.exports = class Home {
     return db.collection('homes').deleteOne({_id: new ObjectId(String(homeId))});
   }
 };
+

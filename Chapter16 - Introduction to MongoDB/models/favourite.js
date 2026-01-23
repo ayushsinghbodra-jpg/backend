@@ -15,7 +15,7 @@ module.exports = class Favourite {
     //getting the database connection
     const db = getDB();
     //this will return a promise that resolves when the save operation is complete.
-    //.findOne() method is used to check if a favourite with the same houseId already exists in the collection.
+    //.findOne() method is used to check if a fasvourite with the same houseId already exists in the collection.
     return db.collection('favourites').findOne({houseId: this.houseId}).then(existingFav => {
       if (!existingFav) {
         //this will insert a new document representing the favourite home into the favourites collection.

@@ -11,7 +11,6 @@ const MONGO_URL = "mongodb+srv://root:root@projects.gcju5uc.mongodb.net/?appName
 //this is where we will store the database connection
 let _db;
 
-
 //this has to be callback function because connecting to database is an async operation
 const mongoConnect = (callback) => {
   //connecting to mongo database server
@@ -25,7 +24,7 @@ const mongoConnect = (callback) => {
   }).catch(err => {
     console.log('Error while connecting to Mongo: ', err);
   });
-}
+};
 
 //a call-back function to get the connected database since it returns the _db variable to the other files
 const getDB = () => {

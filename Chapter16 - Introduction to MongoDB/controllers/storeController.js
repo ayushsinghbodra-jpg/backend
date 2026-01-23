@@ -13,7 +13,6 @@ exports.getIndex = (req, res, next) => {
   });
 };
 
-
 exports.getHomes = (req, res, next) => {
   Home.fetchAll().then((registeredHomes) => {
     res.render("store/home-list", {
@@ -32,11 +31,17 @@ exports.getBookings = (req, res, next) => {
 };
 
 exports.getFavouriteList = (req, res, next) => {
+  //fetch all the favourites first then fetch all the homes and filter the homes based on the favourites.
   Favourite.getFavourites().then(favourites => {
+    //map will return a new array containing only the houseId from the favourites array of objects.
     favourites = favourites.map(fav => fav.houseId);
+    //howe.fetchAll will return all the homes from the homes collection.
     Home.fetchAll().then(registeredHomes => {
       console.log(favourites, registeredHomes);
+      //this will filter the homes based on the favourites array that we got earlier.
       const favouriteHomes = registeredHomes.filter((home) =>
+        //we need to convert the home._id to string because favourites array contains string values.
+        //includes method will return true if the home._id is present in the favourites array.
         favourites.includes(home._id.toString())
       );
       res.render("store/favourite-list", {
@@ -51,10 +56,14 @@ exports.getFavouriteList = (req, res, next) => {
 exports.postAddToFavourite = (req, res, next) => {
   const homeId = req.body.id;
   const fav = new Favourite(homeId);
+  //savemethod will handle both insert and update operation based on the presence of the id.
+  //and then  the then block will be executed after the save operation is completed.
   fav.save().then(result => {
     console.log('Fav added: ', result);
+    //catch block will handle any error that occurs during the save operation.
   }).catch(err => {
     console.log("Error while marking favourite: ", err);
+    //finally block will be executed after the then or catch block is executed.
   }).finally(() => {
     res.redirect("/favourites");
   })
