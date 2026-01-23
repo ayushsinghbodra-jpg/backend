@@ -5,6 +5,7 @@ const hostRouter = express.Router();
 // Local Module
 const hostController = require("../controllers/hostController");
 
+// Host Routes
 hostRouter.get("/add-home", hostController.getAddHome);
 hostRouter.post("/add-home", hostController.postAddHome);
 hostRouter.get("/host-home-list", hostController.getHostHomes);

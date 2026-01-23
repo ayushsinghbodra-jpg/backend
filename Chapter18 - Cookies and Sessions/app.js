@@ -10,7 +10,7 @@ const session = require('express-session');
 //connect-mongodb-session is a MongoDB-backed session store for Express and Connect which works with express-session to store session data in a MongoDB database and the (session) parameter will pass the express-session module to it i.e., it is a function that takes the session module as an argument and returns a MongoDBStore constructor
 const MongoDBStore = require('connect-mongodb-session')(session);
 //MongoDB connection string
-const DB_PATH = "mongodb+srv://root:root@projects.gcju5uc.mongodb.net/?appName=projects"
+const DB_PATH = "mongodb+srv://root:root@projects.gcju5uc.mongodb.net/airbnb?appName=projects"
 
 //Local Module
 const storeRouter = require("./routes/storeRouter")

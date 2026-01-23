@@ -17,6 +17,7 @@ const homeSchema = mongoose.Schema({
     type: Number,
     required: true
   },
+  //these 2 we are not making required as host may not provide these details and they are not having something inside {} because these are simple string fields
   photoUrl: String,
   description: String,
 });

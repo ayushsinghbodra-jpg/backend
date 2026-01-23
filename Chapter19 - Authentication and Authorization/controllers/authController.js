@@ -126,7 +126,7 @@ exports.postLogin = async (req, res, next) => {
       user: {},
     });
   }
-
+  
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
     return res.status(422).render("auth/login", {
